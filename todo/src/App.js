@@ -1,5 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import ToDo from './components/ToDo';
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
         <Text style={styles.title}>Yapılacaklar</Text>
         <Text style={styles.number}>0</Text>
       </View>
+      <ToDo />
     </View>
   );
 }
