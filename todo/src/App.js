@@ -6,7 +6,7 @@ function App() {
   return (
     <View style={styles.container}>
       <View style={styles.first_container}>
-        <Text style={styles.title}>Yapılacaklar</Text>
+        <Text style={styles.title}>ToDo List</Text>
         <Text style={styles.number}>0</Text>
       </View>
       <ToDo />
@@ -27,7 +27,8 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
+    marginRight: 10,
   },
   title: {
     color: '#FFA500',
