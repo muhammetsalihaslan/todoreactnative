@@ -1,15 +1,31 @@
-import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import React, {useState} from 'react';
+import {FlatList, StyleSheet, Text, View} from 'react-native';
 import ToDo from './components/ToDo';
 
 function App() {
+  const [tasks, setTasks] = useState([]);
+
+  const handleAddTask = task => {
+    setTasks([...tasks, {id: Date.now().toString(), text: task}]);
+  };
+
+  const renderItem = ({item}) => (
+    <View style={styles.taskItem}>
+      <Text>{item.text}</Text>
+    </View>
+  );
   return (
     <View style={styles.container}>
       <View style={styles.first_container}>
         <Text style={styles.title}>ToDo List</Text>
         <Text style={styles.number}>0</Text>
       </View>
-      <ToDo />
+      <FlatList
+        data={tasks}
+        keyExtractor={item => item.id}
+        renderItem={renderItem}
+      />
+      <ToDo onAddTask={handleAddTask} />
     </View>
   );
 }
