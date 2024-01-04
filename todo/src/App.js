@@ -24,6 +24,7 @@ function App() {
         data={tasks}
         keyExtractor={item => item.id}
         renderItem={renderItem}
+        style={styles.flat}
       />
       <ToDo onAddTask={handleAddTask} />
     </View>
