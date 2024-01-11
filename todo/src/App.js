@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     color: '#FFA500',
     marginTop: 35,
     marginLeft: 10,
-    flex: 1,
+
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginRight: 10,
@@ -57,5 +57,14 @@ const styles = StyleSheet.create({
     fontSize: 50,
     fontWeight: 'bold',
     marginLeft: 20,
+  },
+  textItem: {
+    color: 'white',
+  },
+  flat: {
+    backgroundColor: '#7DA453',
+    color: 'white',
+    width: '100%',
+    height: 5,
   },
 });

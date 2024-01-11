@@ -15,6 +15,7 @@ export default StyleSheet.create({
     borderBottomColor: '#808080',
     marginBottom: 10,
     color: 'white',
+    textDecorationLine: 'none',
   },
   todoButton: {
     borderRadius: 10,
