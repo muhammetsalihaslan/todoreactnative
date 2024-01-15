@@ -6,19 +6,30 @@ function App() {
   const [tasks, setTasks] = useState([]);
 
   const handleAddTask = task => {
-    setTasks([...tasks, {id: Date.now().toString(), text: task}]);
+    setTasks([...tasks, {id: tasks.length + 1, text: task, completed: false}]);
+  };
+
+  const toggleTodo = id => {
+    const updatedTodos = tasks.map(todo =>
+      todo.id === id ? {...todo, completed: !todo.completed} : todo,
+    );
+    setTasks(updatedTodos);
   };
 
   const renderItem = ({item}) => (
-    <View style={styles.taskItem}>
-      <Text>{item.text}</Text>
+    <View style={styles.taskItem} onPress={() => toggleTodo(item.id)}>
+      <Text style={item.completed ? styles.completedTodo : styles.text}>
+        {item.text}
+      </Text>
     </View>
   );
+
+  const getRemainingTodos = () => tasks.filter(todo => !todo.completed).length;
   return (
     <View style={styles.container}>
       <View style={styles.first_container}>
         <Text style={styles.title}>ToDo List</Text>
-        <Text style={styles.number}>0</Text>
+        <Text style={styles.number}>{getRemainingTodos()}</Text>
       </View>
       <FlatList
         data={tasks}
@@ -58,13 +69,20 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginLeft: 20,
   },
-  textItem: {
+
+  text: {
     color: 'white',
+    fontSize: 30,
+    backgroundColor: '#7DA453',
+    marginTop: 5,
+    borderRadius: 8,
+    padding: 5,
+  },
+  completedTodo: {
+    textDecorationLine: 'line-through',
+    color: 'gray',
   },
   flat: {
-    backgroundColor: '#7DA453',
-    color: 'white',
-    width: '100%',
-    height: 5,
+    margin: 5,
   },
 });
