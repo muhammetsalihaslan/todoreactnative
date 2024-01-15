@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {FlatList, StyleSheet, Text, View} from 'react-native';
+import {FlatList, Pressable, StyleSheet, Text, View} from 'react-native';
 import ToDo from './components/ToDo';
 
 function App() {
@@ -17,11 +17,11 @@ function App() {
   };
 
   const renderItem = ({item}) => (
-    <View style={styles.taskItem} onPress={() => toggleTodo(item.id)}>
+    <Pressable style={styles.taskItem} onPress={() => toggleTodo(item.id)}>
       <Text style={item.completed ? styles.completedTodo : styles.text}>
         {item.text}
       </Text>
-    </View>
+    </Pressable>
   );
 
   const getRemainingTodos = () => tasks.filter(todo => !todo.completed).length;
@@ -72,15 +72,20 @@ const styles = StyleSheet.create({
 
   text: {
     color: 'white',
-    fontSize: 30,
+    fontSize: 25,
     backgroundColor: '#7DA453',
     marginTop: 5,
     borderRadius: 8,
-    padding: 5,
+    padding: 10,
   },
   completedTodo: {
     textDecorationLine: 'line-through',
     color: 'gray',
+    fontSize: 25,
+    backgroundColor: '#37474F',
+    marginTop: 5,
+    borderRadius: 8,
+    padding: 10,
   },
   flat: {
     margin: 5,
